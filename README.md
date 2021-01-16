@@ -1,5 +1,5 @@
 # Intro
-The script will get your currently playing song on Spotify and automatically grab the lyrics.
+The script will get your currently playing song on Spotify and automatically grab the lyrics.  
 
 &nbsp;
 
@@ -12,7 +12,7 @@ The script will get your currently playing song on Spotify and automatically gra
 
 ## Get credentials
 
-> To use this program, you will need to get the `SP_DC` and `SP_KEY` cookie values:  
+> To use this program, you will need to get the `SP_DC` and `SP_KEY` cookie values.   
 
 
 To obtain the cookies (valid for 1 year):
@@ -27,7 +27,7 @@ To obtain the cookies (valid for 1 year):
 &nbsp;
 
 
-## Start program
+# Run
 Export your Spotify Username and PW as environment variables and then start the script.  e.g.  
 
 ```
