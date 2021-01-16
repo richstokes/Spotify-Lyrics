@@ -9,10 +9,9 @@ import spotify_token as st
 
 query = ''
 currentSong = ''
-USER = os.environ.get('SPOTIFY_USER')
-PW = os.environ.get('SPOTIFY_PW')
+USER = os.environ.get('SP_DC')
+PW = os.environ.get('SP_KEY')
 TOKEN = ''
-
 
 def get_token():
     """ Get an OAuth token for Spotify """
@@ -65,8 +64,11 @@ def get_Song_Lyrics(query):
     query = '+'.join(query.split())
     url = 'https://www.google.com/search?q=' + query + '&ie=utf-8&oe=utf-8'
     r = s.get(url, headers=headers_Get)
+    # print(r.text)
     soup = BeautifulSoup(r.text, "html.parser").find_all("span", {"jsname": "YS01Ge"})
+    # print(soup)
     for link in soup:
+        # print(link)
         lyric_text += (link.text + '\n')
     return lyric_text
 
