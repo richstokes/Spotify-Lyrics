@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import os
 import requests
+import click
 from bs4 import BeautifulSoup
 import json
 from io import StringIO
@@ -12,6 +13,7 @@ currentSong = ''
 USER = os.environ.get('SP_DC')
 PW = os.environ.get('SP_KEY')
 TOKEN = ''
+API_DELAY = 1 # Delay (in seconds) between checking the Spotify API for a song change
 
 def get_token():
     """ Get an OAuth token for Spotify """
@@ -80,15 +82,15 @@ def main():
 
     while True:  # Main loop
         if song_data() != currentSong:  # Check if the song has changed
-            os.system('cls' if os.name == 'nt' else 'clear')  # Clear screen
-            print(song_data())  # Print song info
+            click.clear()
+            click.secho(song_data(), bold=True)
             lyrics = get_Song_Lyrics(query)
             if len(lyrics) < 2:
                 print('\nNo lyrics found 🎸')
             else:
-                print(lyrics)
+                click.secho(lyrics, bg='blue', fg='white')
             currentSong = song_data()
-        time.sleep(1)  # Delay between checking the Spotify API again
+        time.sleep(API_DELAY)
 
 
 if __name__ == '__main__':
